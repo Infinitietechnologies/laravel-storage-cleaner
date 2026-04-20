@@ -1,0 +1,47 @@
+{
+    "name": "infinitietechnologies/laravel-storage-cleaner",
+    "description": "A Laravel package for scheduled storage cleanup with file, cache, session, log, and database retention policies.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "InfinitieTechnologies\\StorageCleaner\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "InfinitieTechnologies\\StorageCleaner\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.1",
+        "illuminate/console": "^10.0|^11.0|^12.0",
+        "illuminate/contracts": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "illuminate/filesystem": "^10.0|^11.0|^12.0",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "phpunit/phpunit": "^10.0|^11.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "InfinitieTechnologies\\StorageCleaner\\StorageCleanerServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "php -l src/StorageCleanerServiceProvider.php"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
