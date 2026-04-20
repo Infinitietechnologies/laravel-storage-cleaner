@@ -33,7 +33,7 @@ class StorageCleanerServiceProvider extends ServiceProvider
                 return;
             }
 
-            $event = app(Schedule::class)->command('storage:clean');
+            $event = app(Schedule::class)->command('storage:clean', ['--force' => true]);
             $frequency = config('storage-cleaner.schedule.frequency', 'daily');
 
             match ($frequency) {

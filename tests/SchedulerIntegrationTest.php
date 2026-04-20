@@ -10,6 +10,7 @@ class SchedulerIntegrationTest extends TestCase
     public function test_storage_clean_command_is_registered_with_artisan(): void
     {
         $this->assertArrayHasKey('storage:clean', Artisan::all());
+        $this->assertArrayHasKey('storage:clean-old', Artisan::all());
     }
 
     public function test_storage_clean_command_is_registered_with_laravel_scheduler(): void
@@ -21,6 +22,7 @@ class SchedulerIntegrationTest extends TestCase
         );
 
         $this->assertNotNull($scheduledCommand);
+        $this->assertStringContainsString('--force', $scheduledCommand->command);
         $this->assertSame('0 0 * * *', $scheduledCommand->expression);
     }
 }
