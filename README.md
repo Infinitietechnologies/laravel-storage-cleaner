@@ -50,7 +50,7 @@ php artisan storage:clean --json
 
 ## Scheduling
 
-The package registers its own scheduler entry when enabled:
+The package registers its own scheduler entry when enabled. You do not need to add `Schedule::command(...)` manually in `app/Console/Kernel.php` or `routes/console.php`.
 
 ```dotenv
 STORAGE_CLEANER_ENABLED=true
@@ -58,7 +58,13 @@ STORAGE_CLEANER_SCHEDULE_ENABLED=true
 STORAGE_CLEANER_FREQUENCY=daily
 ```
 
-Make sure Laravel's scheduler is running on the server:
+After the package is installed, Laravel's normal scheduler runner is enough:
+
+```bash
+php artisan schedule:run
+```
+
+For production, keep Laravel's scheduler running on the server:
 
 ```bash
 * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
